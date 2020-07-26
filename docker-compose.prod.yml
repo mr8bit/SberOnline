@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     build: 
-      context: ./app
+      context: ./src
       dockerfile: Dockerfile.prod
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
     volumes:
