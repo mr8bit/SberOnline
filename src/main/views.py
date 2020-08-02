@@ -12,8 +12,9 @@ import keras.backend as K
 from keras.preprocessing import sequence
 import re
 from keras.models import load_model
-
+from . import utils as U
 num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')
+import numpy as np
 
 def is_number(token):
     return bool(num_regex.match(token))
@@ -53,10 +54,10 @@ def parseSentence(line):
     text_stem = [morph.parse(w)[0].normal_form for w in text_rmstop]
     return text_stem
 
-vocab, train_x, _, overall_maxlen = dataset.get_data('appstore', maxlen=256 ,vocab_size=99507)
+vocab, train_x, _, overall_maxlen = dataset.get_data('appstore_', maxlen=256 ,vocab_size=99507)
 test_x = train_x
 test_x = sequence.pad_sequences(test_x, maxlen=overall_maxlen)
-out_dir = '../output' + '/' + 'appstore'
+out_dir = 'output' + '/' + 'appstore'
 
 print("Load model...")
 model = load_model(out_dir + '/model_param.h5',
@@ -64,6 +65,10 @@ model = load_model(out_dir + '/model_param.h5',
                                    "MaxMargin": MaxMargin, "WeightedAspectEmb": WeightedAspectEmb,
                                    "max_margin_loss": U.max_margin_loss})
 print("Model has been loaded...")
+
+vocab_inv = {}
+for w, ind in vocab.items():
+    vocab_inv[ind] = w
 
 splits = []
 def main(request):
@@ -78,9 +83,16 @@ def main(request):
         else:
             tokens = parseSentence(remove_shit)
             if len(tokens) > 1:
-                tokens_setnecess = ' '.join(tokens)
-                for_nn = one_word_preprocess(tokens_setnecess)
-
+                tokens_sentecess = ' '.join(tokens)
+                sentence = one_word_preprocess(tokens_sentecess)
+                test_fn = K.function([model.get_layer('sentence_input').input, K.learning_phase()],
+                                     [model.get_layer('att_weights').output, model.get_layer('p_t').output])
+                att_weights, aspect_probs = [], []
+                cur_att_weights, cur_aspect_probs = test_fn([sentence, 0])
+                att_weights.append(cur_att_weights)
+                aspect_probs.append(cur_aspect_probs)
+                label_ids = np.argsort(aspect_probs, axis=1)[:, -1]
+                print(label_ids)
             else:
                 context['teams'] = ['Слишком мало слов, пиши больше']
                 return TemplateResponse(request, 'review.html', context)
