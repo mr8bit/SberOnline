@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body style="background-color: #1a1a1a;">
+<div class="container" style="display:flex; align-items: center;flex-direction: column;">
+    <div style="display:flex; height:600px; justify-content: center; align-items: center; flex-direction: column">
+        <svg x="0" y="0" width="120" height="120" viewBox="0, 0, 1500, 1500">
+            <defs>
+                <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="392.27" y1="523.008" x2="-113.709"
+                                y2="1382.965" gradientTransform="matrix(0.866, -0.5, 0.5, 0.866, 0, 0)">
+                    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                    <stop offset="0.33" stop-color="#00E9FF"></stop>
+                </linearGradient>
+                <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="410.259" y1="514.432" x2="-113.609"
+                                y2="1388.951" gradientTransform="matrix(0.866, -0.5, 0.5, 0.866, 0, 0)">
+                    <stop offset="0.736" stop-color="#FF00D2"></stop>
+                    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                </linearGradient>
+            </defs>
+            <g id="Layer_2">
+                <path d="M685.935,282.165 L692.107,292.855 L1207.629,1185.764 L1226.144,1217.833 L920.09,1217.833 L913.918,1207.143 L742.784,910.73 L571.649,1207.143 L565.477,1217.833 L259.423,1217.833 L277.939,1185.764 L589.757,645.679 L398.397,314.235 L379.882,282.165 L685.935,282.165 z M661.248,324.925 L453.944,324.925 L632.96,634.989 L639.132,645.679 L632.96,656.369 L333.486,1175.073 L540.79,1175.073 L724.268,857.28 L742.784,825.21 L761.299,857.28 L944.777,1175.073 L1152.081,1175.073 L661.248,324.925 z"
+                      fill="url(#Gradient_1)"></path>
+                <path d="M735.07,282.166 L741.242,292.856 L1256.763,1185.765 L1275.279,1217.835 L969.224,1217.835 L963.052,1207.145 L791.918,910.731 L620.784,1207.145 L614.612,1217.835 L308.558,1217.835 L327.073,1185.765 L638.891,645.681 L447.532,314.236 L429.016,282.166 L735.07,282.166 z M710.382,324.926 L503.078,324.926 L682.094,634.991 L688.266,645.681 L682.094,656.371 L382.62,1175.075 L589.924,1175.075 L773.403,857.281 L791.918,825.211 L810.434,857.281 L993.912,1175.075 L1201.216,1175.075 L710.382,324.926 z"
+                      fill="url(#Gradient_2)"></path>
+            </g>
+        </svg>
+        <form method="post" action="." style="display:flex;flex-direction:column;width: 600px;align-items: flex-end">
+            <div style="margin: 0;
+padding: 35px 0;
+font-family: Roboto,sans-serif;
+font-size: 21px;
+font-weight: 300;width: 100%;
+text-align: center;
+color: #bfbfbf;">Оставь свой отзыв о приложении Сбербанка..
+            </div>
+            <textarea required placeholder="Напишите тут.." name="review" style="width:100%;height:250px;font-family: Roboto,sans-serif;
+color: #bfbfbf;
+font-size: 16px;
+line-height: 30px;background-color: #252525;padding: 20px;outline:none;border: none;border-radius:6px"></textarea>
+            <button type="submit" value="Send" style="width:150px;margin-top: 10px;    display: inline-block;
+    border: none;
+    color: #bfbfbf;
+    border-radius: 4px;
+    background-color: #303030;
+    padding: 10px 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+        transition-timing-function: ease;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+    outline: none;">
+                <span style="color: #bfbfbf;font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+font-family: Roboto,sans-serif;
+font-weight: 700;">Отправить</span>
+            </button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
