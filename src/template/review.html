@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Title</title>
+    <title>Lambda Team</title>
 </head>
 <body style="background-color: #1a1a1a;">
 <div class="container" style="display:flex; align-items: center;flex-direction: column;">
@@ -40,7 +40,8 @@ font-family: Roboto,sans-serif;
 font-size: 21px;
 font-weight: 300;width: 100%;
 text-align: center;
-color: #bfbfbf;">Попробуйте обратиться к {% if teams|length > 0 %} этим командам... {% else %} этой команде... {% endif %}
+color: #bfbfbf;">Попробуйте обратиться к {% if teams|length > 0 %} этим командам... {% else %} этой
+                команде... {% endif %}
             </div>
 
             <div>
@@ -65,6 +66,23 @@ font-weight: 700;">
                     </div>
                 {% endfor %}
             </div>
+
+            <div style="margin: 0;
+padding: 35px 0;
+font-family: Roboto,sans-serif;
+font-size: 21px;
+font-weight: 300;width: 100%;
+text-align: center;
+color: #bfbfbf;">Или попробуйте воспользоваться нашим ответом...</div>
+            <div style="margin: 0;
+padding: 35px 0;
+font-family: Roboto,sans-serif;
+font-size: 21px;
+font-weight: 300;width: 100%;
+text-align: center;
+color: #bfbfbf;">{{ answer }}</div>
+
+
         </div>
     </div>
 </div>

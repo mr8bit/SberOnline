@@ -11,7 +11,7 @@ def is_number(token):
 
 def create_vocab(domain, maxlen=0, vocab_size=0):
     # assert domain in {'restaurant', 'beer'}
-    source = '../preprocessed_data/' + domain + '/train.txt'
+    source = './main/preprocessed_data/' + domain + '/train.txt'
 
     total_words, unique_words = 0, 0
     word_freqs = {}
@@ -46,7 +46,7 @@ def create_vocab(domain, maxlen=0, vocab_size=0):
         print ('  keep the top %i words' % vocab_size)
 
     # Write (vocab, frequence) to a txt file
-    vocab_file = codecs.open('../preprocessed_data/%s/vocab' % domain, mode='w', encoding='utf8')
+    vocab_file = codecs.open('./main/preprocessed_data/%s/vocab' % domain, mode='w', encoding='utf8')
     sorted_vocab = sorted(vocab.items(), key=operator.itemgetter(1))
     for word, index in sorted_vocab:
         if index < 3:
@@ -62,7 +62,7 @@ def read_dataset(domain, phase, vocab, maxlen):
     # assert domain in {'restaurant', 'beer'}
     assert phase in {'train', 'test'}
 
-    source = '../preprocessed_data/' + domain + '/' + phase + '.txt'
+    source = './main/preprocessed_data/' + domain + '/' + phase + '.txt'
     num_hit, unk_hit, total = 0., 0., 0.
     maxlen_x = 0
     data_x = []
@@ -108,8 +108,11 @@ def get_data(domain, vocab_size=0, maxlen=0):
     return vocab, train_x, test_x, maxlen
 
 
-if __name__ == "__main__":
-    vocab, train_x, test_x, maxlen = get_data('restaurant')
-    print(len(train_x))
-    print(len(test_x))
-    print(maxlen)
+
+def load_only_vocab(domain, vocab_size=0, maxlen=0):
+    print('Reading data from ' + domain)
+    print(' Creating vocab ...')
+    vocab = create_vocab(domain, maxlen, vocab_size)
+    return vocab
+
+

@@ -1,7 +1,0 @@
-iOSPlatform
-iOSPlatform
-MapPhone
-TextChat
-SBOLClassicTransaction
-iOSPlatform
-DebetCartInMobileApp
