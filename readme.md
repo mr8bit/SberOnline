@@ -1,6 +1,3 @@
-# README
-
-
 ## Описание задачи
 
 Тематическое моделирование с использование модели (Attention Based Aspect Extraction).
